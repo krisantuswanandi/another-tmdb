@@ -1,5 +1,9 @@
+<script setup>
+const { data } = await useFetch('/api/movies')
+</script>
+
 <template>
   <div>
-    <NuxtWelcome />
+    {{ data }}
   </div>
 </template>
