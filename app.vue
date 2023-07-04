@@ -1,9 +1,10 @@
 <script setup>
-const { data } = await useFetch('/api/movies')
+const { data } = await useFetch("/api/movies")
+const titles = data.value.results.map((result) => result.title)
 </script>
 
 <template>
-  <div>
-    {{ data }}
-  </div>
+  <ul>
+    <li v-for="t in titles" :key="t">{{ t }}</li>
+  </ul>
 </template>
