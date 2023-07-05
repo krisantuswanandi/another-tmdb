@@ -1,6 +1,7 @@
 export default defineEventHandler(async (event) => {
   try {
-    return await $fetch("https://api.themoviedb.org/3/movie/popular", {
+    return await $fetch(event.context.params!.path, {
+      baseURL: "https://api.themoviedb.org/3",
       params: {
         api_key: process.env.TMDB_API_KEY
       }
