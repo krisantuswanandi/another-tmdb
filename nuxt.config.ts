@@ -4,4 +4,7 @@ export default defineNuxtConfig({
   experimental: {
     typedPages: true,
   },
+  modules: [
+    "@vueuse/nuxt",
+  ],
 })
