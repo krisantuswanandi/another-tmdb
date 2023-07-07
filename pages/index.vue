@@ -8,6 +8,7 @@ const tvShows = response[1].data.value.results.slice(0, 5).map((result) => resul
 </script>
 
 <template>
+  <NuxtLink to="/search">search</NuxtLink>
   <h1>Popular Movies</h1>
   <ul>
     <li v-for="i in movies" :key="i">{{ i }}</li>
