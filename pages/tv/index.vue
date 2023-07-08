@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const tvs = ref<Tv[]>([])
 
-const { data } = await useFetch<TvResponse>("/api/tmdb/tv/popular")
+const { data } = await useFetch<TvList>("/api/tmdb/tv/popular")
 if (data.value) {
   tvs.value = data.value.results
 }
@@ -11,6 +11,8 @@ if (data.value) {
   <NuxtLink to="/">back to home</NuxtLink>
   <h1>Popular TV Shows</h1>
   <ul>
-    <li v-for="tv in tvs" :key="tv.id">{{ tv.name }}</li>
+    <li v-for="tv in tvs" :key="tv.id">
+      <NuxtLink :to="`/tv/${tv.id}`">{{ tv.name }}</NuxtLink>
+    </li>
   </ul>
 </template>

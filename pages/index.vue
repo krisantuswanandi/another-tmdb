@@ -3,8 +3,8 @@ const movies = ref<Movie[]>([])
 const tvs = ref<Tv[]>([])
 
 const response = await Promise.all([
-  useFetch<MovieResponse>("/api/tmdb/movie/popular"),
-  useFetch<TvResponse>("/api/tmdb/tv/popular"),
+  useFetch<MovieList>("/api/tmdb/movie/popular"),
+  useFetch<TvList>("/api/tmdb/tv/popular"),
 ])
 
 if (response[0].data.value) {
@@ -20,12 +20,16 @@ if (response[1].data.value) {
   <NuxtLink to="/search">search</NuxtLink>
   <h1>Popular Movies</h1>
   <ul>
-    <li v-for="movie in movies" :key="movie.id">{{ movie.title }}</li>
+    <li v-for="movie in movies" :key="movie.id">
+      <NuxtLink :to="`/movie/${movie.id}`">{{ movie.title }}</NuxtLink>
+    </li>
     <li><NuxtLink to="/movie">see more</NuxtLink></li>
   </ul>
   <h1>Popular TV Shows</h1>
   <ul>
-    <li v-for="tv in tvs" :key="tv.id">{{ tv.name }}</li>
+    <li v-for="tv in tvs" :key="tv.id">
+      <NuxtLink :to="`/tv/${tv.id}`">{{ tv.name }}</NuxtLink>
+    </li>
     <li><NuxtLink to="/tv">see more</NuxtLink></li>
   </ul>
 </template>

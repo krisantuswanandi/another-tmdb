@@ -8,7 +8,7 @@ async function search() {
     return
   }
 
-  const { data } = await useFetch<SearchResponse>(`/api/tmdb/search/multi?query=${keyword.value}`)
+  const { data } = await useFetch<SearchList>(`/api/tmdb/search/multi?query=${keyword.value}`)
   if (data.value) {
     results.value = data.value.results
   }
@@ -26,7 +26,12 @@ watch(keyword, debouncedSearch)
     <h1>Results</h1>
     <ul>
       <li v-for="result in results" :key="result.id">
-        {{ result.media_type === "movie" ? result.title : result.name }}
+        <template v-if="result.media_type === 'movie'">
+          <NuxtLink :to="`/movie/${result.id}`">{{ result.title }}</NuxtLink>
+        </template>
+        <template v-else>
+          <NuxtLink :to="`/tv/${result.id}`">{{ result.name }}</NuxtLink>
+        </template>
       </li>
     </ul>
   </template>

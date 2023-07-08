@@ -15,16 +15,16 @@ interface Tv extends Media {
   media_type: "tv";
 }
 
-interface MovieResponse {
+interface MovieList {
   results: Movie[];
 }
 
-interface TvResponse {
+interface TvList {
   results: Tv[];
 }
 
 type MovieTv = Movie | Tv
 
-interface SearchResponse {
+interface SearchList {
   results: (MovieTv)[];
 }
