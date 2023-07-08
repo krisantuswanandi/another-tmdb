@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 const keyword = ref("")
-const results = ref([])
+const results = ref<MovieTv[]>([])
 
 async function search() {
   if (!keyword.value) {
@@ -8,12 +8,9 @@ async function search() {
     return
   }
 
-  try {
-    const { data } = await useFetch(`/api/tmdb/search/multi?query=${keyword.value}`)
-    console.log(JSON.parse(JSON.stringify(data.value)))
-    results.value = data.value.results.map((result) => result.title || result.name)
-  } catch {
-    results.value = []
+  const { data } = await useFetch<SearchResponse>(`/api/tmdb/search/multi?query=${keyword.value}`)
+  if (data.value) {
+    results.value = data.value.results
   }
 }
 
@@ -28,7 +25,9 @@ watch(keyword, debouncedSearch)
   <template v-if="results.length">
     <h1>Results</h1>
     <ul>
-      <li v-for="i in results" :key="i">{{ i }}</li>
+      <li v-for="result in results" :key="result.id">
+        {{ result.media_type === "movie" ? result.title : result.name }}
+      </li>
     </ul>
   </template>
 </template>
