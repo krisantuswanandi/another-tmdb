@@ -2,6 +2,9 @@ type MediaType = "movie" | "tv";
 
 interface Media {
   id: number;
+  external_ids: {
+    imdb_id: string;
+  };
   media_type: MediaType;
 }
 

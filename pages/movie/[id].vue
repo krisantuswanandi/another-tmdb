@@ -2,7 +2,7 @@
 const route = useRoute("movie-id")
 const movie = ref<Movie | null>(null)
 
-const { data } = await useFetch<Movie>(`/api/tmdb/movie/${route.params.id}`)
+const { data } = await useFetch<Movie>(`/api/tmdb/movie/${route.params.id}?append_to_response=external_ids`)
 if (data.value) {
   movie.value = data.value
 }
@@ -12,5 +12,6 @@ if (data.value) {
   <NuxtLink to="/">back to home</NuxtLink>
   <template v-if="movie">
     <h1>{{ movie.title }}</h1>
+    <NuxtLink target="_blank" :to="`https://www.imdb.com/title/${movie.external_ids.imdb_id}`">IMDb</NuxtLink>
   </template>
 </template>
