@@ -22,17 +22,5 @@ watch(keyword, debouncedSearch)
 <template>
   <NuxtLink to="/">back to home</NuxtLink>
   <p>Search: <input v-model="keyword"></p>
-  <template v-if="results.length">
-    <h1>Results</h1>
-    <ul>
-      <li v-for="result in results" :key="result.id">
-        <template v-if="result.media_type === 'movie'">
-          <NuxtLink :to="`/movie/${result.id}`">{{ result.title }}</NuxtLink>
-        </template>
-        <template v-else>
-          <NuxtLink :to="`/tv/${result.id}`">{{ result.name }}</NuxtLink>
-        </template>
-      </li>
-    </ul>
-  </template>
+  <MediaList v-if="results.length" title="Results" :list="results" />
 </template>

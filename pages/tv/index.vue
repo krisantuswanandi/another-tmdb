@@ -3,16 +3,14 @@ const tvs = ref<Tv[]>([])
 
 const { data } = await useFetch<TvList>("/api/tmdb/tv/popular")
 if (data.value) {
-  tvs.value = data.value.results
+  tvs.value = data.value.results.map(result => ({
+    ...result,
+    media_type: "tv",
+  }))
 }
 </script>
 
 <template>
   <NuxtLink to="/">back to home</NuxtLink>
-  <h1>Popular TV Shows</h1>
-  <ul>
-    <li v-for="tv in tvs" :key="tv.id">
-      <NuxtLink :to="`/tv/${tv.id}`">{{ tv.name }}</NuxtLink>
-    </li>
-  </ul>
+  <MediaList title="Popular TV Shows" :list="tvs" />
 </template>
