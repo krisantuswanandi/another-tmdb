@@ -6,6 +6,8 @@ interface Media {
     imdb_id: string;
   };
   media_type: MediaType;
+  backdrop_path: string;
+  poster_path: string;
 }
 
 interface Movie extends Media {

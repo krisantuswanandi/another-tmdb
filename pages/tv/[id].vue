@@ -12,6 +12,9 @@ if (data.value) {
   <NuxtLink to="/">back to home</NuxtLink>
   <template v-if="tv">
     <h1>{{ tv.name }}</h1>
+    <div>
+      <img :src="`https://image.tmdb.org/t/p/w500${tv.backdrop_path}`" :alt="tv.name">
+    </div>
     <NuxtLink target="_blank" :to="`https://www.imdb.com/title/${tv.external_ids.imdb_id}`">IMDb</NuxtLink>
   </template>
 </template>
