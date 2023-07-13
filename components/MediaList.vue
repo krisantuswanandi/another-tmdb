@@ -8,13 +8,10 @@ defineProps<{
 <template>
   <h1 v-if="title">{{ title }}</h1>
   <ul>
-    <li v-for="item in list" :key="item.id">
-      <template v-if="item.media_type === 'movie'">
-        <NuxtLink :to="`/movie/${item.id}`">{{ item.title }}</NuxtLink>
-      </template>
-      <template v-else>
-        <NuxtLink :to="`/tv/${item.id}`">{{ item.name }}</NuxtLink>
-      </template>
-    </li>
+    <MediaListItem
+      v-for="item in list"
+      :key="item.id"
+      :item="item"
+    />
   </ul>
 </template>
