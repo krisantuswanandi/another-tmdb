@@ -33,3 +33,16 @@ type MovieTv = Movie | Tv
 interface SearchList {
   results: (MovieTv)[];
 }
+
+interface Person {
+  id: number;
+  name: string;
+  profile_path: string | null;
+}
+
+interface Credit {
+  credits: {
+    cast: Person[];
+    crew: Person[],
+  };
+}
