@@ -23,7 +23,7 @@ if (data.value) {
     <div v-if="socials?.instagram_id">
       <NuxtLink target="_blank" :to="`https://instagram.com/${socials.instagram_id}`">Instagram</NuxtLink>
     </div>
-    <div v-if="socials?.imdb_id">
+    <div v-if="socials?.twitter_id">
       <NuxtLink target="_blank" :to="`https://twitter.com/${socials.twitter_id}`">Twitter</NuxtLink>
     </div>
   </template>
