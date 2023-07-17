@@ -2,9 +2,6 @@ type MediaType = "movie" | "tv";
 
 interface Media {
   id: number;
-  external_ids: {
-    imdb_id: string;
-  };
   media_type: MediaType;
   backdrop_path: string;
   poster_path: string;
@@ -45,4 +42,14 @@ interface Credit {
     cast: Person[];
     crew: Person[],
   };
+}
+
+interface Socials {
+  imdb_id: string | null;
+  instagram_id: string | null;
+  twitter_id: string | null;
+}
+
+interface ExternalIds {
+  external_ids: Socials
 }
