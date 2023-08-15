@@ -11,6 +11,5 @@ if (data.value) {
 </script>
 
 <template>
-  <NuxtLink to="/">back to home</NuxtLink>
   <MediaList title="Popular Movies" :list="movies" />
 </template>

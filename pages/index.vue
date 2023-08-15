@@ -23,13 +23,22 @@ if (response[1].data.value) {
 </script>
 
 <template>
-  <NuxtLink to="/search">search</NuxtLink>
-  <div>
-    <MediaList title="Popular Movies" :list="movies" />
-    <NuxtLink to="/movie">see more</NuxtLink>
+  <div class="relative">
+    <div class="absolute top-1 right-0">
+      <NuxtLink to="/movie" class="flex items-center text-sm text-blue-700 hover:underline">
+        see more
+        <div class="i-lucide-chevron-right mt-0.5" />
+      </NuxtLink>
+    </div>
+    <MediaList title="Popular Movies" :list="movies" scroll="horizontal" />
   </div>
-  <div>
-    <MediaList title="Popular TV Shows" :list="tvs" />
-    <NuxtLink to="/tv">see more</NuxtLink>
+  <div class="relative mt-8">
+    <div class="absolute top-1 right-0">
+      <NuxtLink to="/tv" class="flex items-center text-sm text-blue-700 hover:underline">
+        see more
+        <div class="i-lucide-chevron-right mt-0.5" />
+      </NuxtLink>
+    </div>
+    <MediaList title="Popular TV Shows" :list="tvs" scroll="horizontal" />
   </div>
 </template>

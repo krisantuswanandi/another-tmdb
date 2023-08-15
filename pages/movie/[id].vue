@@ -13,23 +13,33 @@ if (data.value) {
 </script>
 
 <template>
-  <NuxtLink to="/">back to home</NuxtLink>
-  <template v-if="movie">
-    <h1>{{ movie.title }}</h1>
-    <div>
-      <img :src="`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`" :alt="movie.title">
+  <div v-if="movie" class="flex flex-col items-center">
+    <h1 class="font-bold text-3xl">{{ movie.title }}</h1>
+    <div class="mt-2">
+      <img v-if="movie.backdrop_path" :src="`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`" :alt="movie.title">
+      <div v-else class="w-[500px] h-[281px] bg-neutral-300 flex justify-center items-center">
+        <div class="i-ic-baseline-videocam-off text-6xl text-neutral-400" />
+      </div>
     </div>
-    <div v-if="socials?.imdb_id">
-      <NuxtLink target="_blank" :to="`https://www.imdb.com/title/${socials.imdb_id}`">IMDb</NuxtLink>
+    <div class="flex gap-2 mt-4">
+      <div v-if="socials?.imdb_id">
+        <NuxtLink target="_blank" :to="`https://www.imdb.com/title/${socials.imdb_id}`">
+          <div class="i-simple-icons-imdb text-xl" />
+        </NuxtLink>
+      </div>
+      <div v-if="socials?.instagram_id">
+        <NuxtLink target="_blank" :to="`https://instagram.com/${socials.instagram_id}`">
+          <div class="i-simple-icons-instagram text-xl" />
+        </NuxtLink>
+      </div>
+      <div v-if="socials?.twitter_id">
+        <NuxtLink target="_blank" :to="`https://twitter.com/${socials.twitter_id}`">
+          <div class="i-simple-icons-twitter text-xl" />
+        </NuxtLink>
+      </div>
     </div>
-    <div v-if="socials?.instagram_id">
-      <NuxtLink target="_blank" :to="`https://instagram.com/${socials.instagram_id}`">Instagram</NuxtLink>
-    </div>
-    <div v-if="socials?.twitter_id">
-      <NuxtLink target="_blank" :to="`https://twitter.com/${socials.twitter_id}`">Twitter</NuxtLink>
-    </div>
-  </template>
-  <template v-if="cast.length">
+  </div>
+  <div v-if="cast.length" class="mt-10">
     <PersonList title="Cast" :list="cast" />
-  </template>
+  </div>
 </template>

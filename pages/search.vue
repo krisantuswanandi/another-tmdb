@@ -20,7 +20,13 @@ watch(keyword, debouncedSearch)
 </script>
 
 <template>
-  <NuxtLink to="/">back to home</NuxtLink>
-  <p>Search: <input v-model="keyword"></p>
-  <MediaList v-if="results.length" title="Results" :list="results" />
+  <div class="relative">
+    <div class="absolute w-10 h-full flex justify-center items-center">
+      <div class="i-lucide-search text-xl" />
+    </div>
+    <input v-model="keyword" placeholder="Search..." class="border border-black w-full pl-10 pr-2 py-1">
+  </div>
+  <div class="mt-4">
+    <MediaList v-if="results.length" :list="results" />
+  </div>
 </template>

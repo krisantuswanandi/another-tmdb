@@ -4,7 +4,6 @@ export default defineNuxtConfig({
   experimental: {
     typedPages: true,
   },
-  modules: [
-    "@vueuse/nuxt",
-  ],
-})
+  modules: ["@vueuse/nuxt", "@unocss/nuxt"],
+  css: ["@unocss/reset/tailwind.css"],
+});
