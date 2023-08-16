@@ -21,22 +21,19 @@ if (data.value) {
         <div class="i-ic-baseline-videocam-off text-6xl text-neutral-400" />
       </div>
     </div>
-    <div class="flex gap-2 mt-4">
-      <div v-if="socials?.imdb_id">
-        <NuxtLink target="_blank" :to="`https://www.imdb.com/title/${socials.imdb_id}`">
-          <div class="i-simple-icons-imdb text-xl" />
-        </NuxtLink>
-      </div>
-      <div v-if="socials?.instagram_id">
-        <NuxtLink target="_blank" :to="`https://instagram.com/${socials.instagram_id}`">
-          <div class="i-simple-icons-instagram text-xl" />
-        </NuxtLink>
-      </div>
-      <div v-if="socials?.twitter_id">
-        <NuxtLink target="_blank" :to="`https://twitter.com/${socials.twitter_id}`">
-          <div class="i-simple-icons-twitter text-xl" />
-        </NuxtLink>
-      </div>
+    <div class="flex mt-4">
+      <NuxtLink v-if="socials?.imdb_id" target="_blank" :to="`https://www.imdb.com/title/${socials.imdb_id}`">
+        <div class="i-bxl-imdb text-2xl" />
+      </NuxtLink>
+      <NuxtLink v-if="socials?.instagram_id" target="_blank" :to="`https://instagram.com/${socials.instagram_id}`">
+        <div class="i-bxl-instagram text-2xl" />
+      </NuxtLink>
+      <NuxtLink v-if="socials?.twitter_id" target="_blank" :to="`https://twitter.com/${socials.twitter_id}`">
+        <div class="i-bxl-twitter text-2xl" />
+      </NuxtLink>
+      <NuxtLink target="_blank" :to="`https://google.com/search?q=${encodeURIComponent(movie.title)}`">
+        <div class="i-bxl-google text-2xl" />
+      </NuxtLink>
     </div>
   </div>
   <div v-if="cast.length" class="mt-10">
