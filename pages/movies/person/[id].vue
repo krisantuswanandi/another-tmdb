@@ -20,7 +20,7 @@ if (data.value) {
       </div>
     </div>
     <div class="flex mt-4">
-      <NuxtLink v-if="socials?.imdb_id" target="_blank" :to="`https://www.imdb.com/title/${socials.imdb_id}`">
+      <NuxtLink v-if="socials?.imdb_id" target="_blank" :to="`https://www.imdb.com/name/${socials.imdb_id}`">
         <div class="i-bxl-imdb text-2xl" />
       </NuxtLink>
       <NuxtLink v-if="socials?.instagram_id" target="_blank" :to="`https://instagram.com/${socials.instagram_id}`">
