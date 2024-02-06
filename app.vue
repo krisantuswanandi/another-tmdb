@@ -1,6 +1,6 @@
 <script setup>
 useHead({
-  title: "NutX | Movies",
+  title: "Another TMDB",
 });
 </script>
 
