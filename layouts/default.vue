@@ -1,7 +1,7 @@
 <script setup>
 useHead({
-  title: "NutX | Movies",
-})
+  title: "NutX",
+});
 </script>
 
 <template>
@@ -10,8 +10,8 @@ useHead({
       <NuxtLink to="/">
         <NutxLogo />
       </NuxtLink>
-      <NuxtLink to="/movies" class="link">Home</NuxtLink>
-      <NuxtLink to="/movies/search" class="link">Search</NuxtLink>
+      <NuxtLink to="/" class="link">Home</NuxtLink>
+      <NuxtLink to="/search" class="link">Search</NuxtLink>
     </header>
     <NuxtPage />
     <footer class="flex justify-center mt-8 mb-4">

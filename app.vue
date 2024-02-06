@@ -1,11 +1,13 @@
 <script setup>
 useHead({
-  title: "NutX",
-})
+  title: "NutX | Movies",
+});
 </script>
 
 <template>
-  <NuxtPage />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <style>

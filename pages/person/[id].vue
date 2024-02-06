@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const route = useRoute("movies-person-id")
+const route = useRoute("person-id")
 const person = ref<Person | null>(null)
 const socials = ref<Socials | null>(null)
 

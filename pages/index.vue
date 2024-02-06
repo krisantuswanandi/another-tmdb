@@ -1,22 +1,50 @@
+<script setup lang="ts">
+const movies = ref<Movie[]>([]);
+const tvs = ref<Tv[]>([]);
+
+const response = await Promise.all([
+  useFetch<MovieList>("/api/tmdb/movie/popular"),
+  useFetch<TvList>("/api/tmdb/tv/popular"),
+]);
+
+if (response[0].data.value) {
+  movies.value = response[0].data.value.results.slice(0, 5).map((result) => ({
+    ...result,
+    media_type: "movie",
+  }));
+}
+
+if (response[1].data.value) {
+  tvs.value = response[1].data.value.results.slice(0, 5).map((result) => ({
+    ...result,
+    media_type: "tv",
+  }));
+}
+</script>
+
 <template>
-  <div class="flex justify-center items-center flex-col h-full">
-    <header>
-      <NutxLogo />
-    </header>
-    <div class="flex flex-col mt-6 gap-1 text-center">
-      <NuxtLink to="/movies" class="link">Movies</NuxtLink>
-      <NuxtLink to="/news" class="link">News</NuxtLink>
-    </div>
-    <footer class="flex justify-center my-10">
-      <NuxtLink to="https://github.com/krisantuswanandi/nutx" target="_blank">
-        <div class="i-mdi-github text-3xl" />
+  <div class="relative">
+    <div class="absolute top-1 right-0">
+      <NuxtLink
+        to="/movie"
+        class="flex items-center text-sm text-blue-700 hover:underline"
+      >
+        see more
+        <div class="i-lucide-chevron-right mt-0.5" />
       </NuxtLink>
-    </footer>
+    </div>
+    <MediaList title="Popular Movies" :list="movies" scroll="horizontal" />
+  </div>
+  <div class="relative mt-8">
+    <div class="absolute top-1 right-0">
+      <NuxtLink
+        to="/tv"
+        class="flex items-center text-sm text-blue-700 hover:underline"
+      >
+        see more
+        <div class="i-lucide-chevron-right mt-0.5" />
+      </NuxtLink>
+    </div>
+    <MediaList title="Popular TV Shows" :list="tvs" scroll="horizontal" />
   </div>
 </template>
-
-<style scoped>
-.link {
-  --at-apply: hover:underline;
-}
-</style>
